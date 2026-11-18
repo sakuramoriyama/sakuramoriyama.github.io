@@ -10,28 +10,20 @@ DATA.profile = {
   visionJa: "学部卒業後にNICU（新生児集中治療室）や救急病棟で看護師として勤務する中で、メディカルアロマが患者の苦痛緩和に与える可能性を実感しました。一方で、主成分である匂いの作用機序が科学的に十分解明されていないことに強い問題意識を抱き、研究の道へ進みました。私の目指す研究は、「臨床と基礎の架け橋」となることです。得られた分子メカニズムの知見を、医療現場や日常の予防ケアで活かせる「科学的根拠に基づいた匂いの応用」へと繋げ、皆さんの健康に少しでも貢献することが目標です。",
   interests: ["Chemical sensing", "Thermal sensing", "GPCR signaling", "TRP channels", "Olfactory receptors", "MD simulation", "Aroma-related sensory mechanisms"],
   // Background & Research Journey: short, connected to current research (edit freely)
-  story: "My research is driven by a question born at the bedside: How do human sensory systems register and interpret the physical world?As a clinical nurse in the NICU and emergency department, I regularly observed how sensory experiences—such as temperature, pain, and subtle aromas—profoundly affected patients' comfort and physiological states. Recognizing that bedside clinical care alone could not fully explain the underlying biological mechanisms, I transitioned into sensory biology to seek answers at the molecular level.During my Ph.D., I focused on building cell-array sensors utilizing human olfactory receptors, developing tools to read out receptor activation. Building on this foundation, my work expanded to explore how olfactory receptors and TRP channels process both chemical and thermal inputs. Currently at Kyoto University (iCeMS), I investigate the functional crosstalk between GPCRs and TRP channels, aiming to unravel how multi-sensory integration shapes cellular signaling.By connecting clinical intuition with rigorous molecular biology, I seek to establish the scientific foundation needed to transform aroma and sensory-based care into evidence-based therapies.",
-  storyJa: "私の研究の原点は、臨床のベッドサイドで抱いた「ヒトの感覚システムは、外界の刺激をどのように捉え、応答しているのか」という問いにあります。NICUや救急病棟の看護師として勤務する中で、温度や痛み、そして香りのような感覚体験が患者さんの状態や苦痛緩和に大きな影響を与える場面に数多く立ち会いました。その一方で、臨床現場の観察だけではその根本的な生物学的メカニズムを解明しきれないもどかしさを感じ、分子レベルで答えを追究すべく感覚生物学の世界へ足を踏み入れました。博士課程では、ヒト嗅覚受容体を活用したセルアレイセンサの構築に取り組み、受容体応答の可視化技術を追究しました。その後、研究対象を嗅覚受容体やTRPチャネルが担う「化学刺激と温度刺激の受容機構」へと拡張し、現在は京都大学iCeMSにて、GPCRとTRPチャネルの機能的クロストークや分子動態の解明に取り組んでいます。臨床で培った感覚への洞察力と分子生物学的な手法を結びつけることで、香りをはじめとする感覚介入を「科学的根拠に基づく医療・ケア」へと進化させる基盤の確立を目指しています。",
   career: [
-    { period: "2026–", text: "Postdoctoral Researcher, Kyoto University" },
-    { period: "2021–2025", text: "The university of Osaka" }
+    { period: "2026.1–", text: "日本学術振興会 特別研究員PD, 京都大学 高等研究院 物質-細胞統合システム拠点" },
+    { period: "2025.10-2025.12", text: "日本学術振興会 特別研究員PD, 大阪大学 産業科学研究所" },
+   { period: "2025.4–2025.9", text: "日本学術振興会 特別研究員DC2, 大阪大学 産業科学研究所" },
   ],
-  education: [{ period: "2025", text: "Ph.D., (science), (The university of Osaka)" }],
+  education: [{ period: "2021.4-2025.9", text: "大阪大学大学院 生命機能研究科 5年一貫制博士課程 (理学博士, 早期修了)" }],
   links: [
     { label: "Researchmap", url: "https://researchmap.jp/sakuramoriyama" },
     { label: "ORCID", url: "https://orcid.org/0009-0005-9806-9835" },
     { label: "Google Scholar", url: "https://scholar.google.com/citations?user=eHtzc04AAAAJ&hl=ja&oi=sra" },
     { label: "LinkedIn", url: "https://www.linkedin.com/in/sakura-moriyama-884203253/" },
-    { label: "X", url: "https://x.com/" }
+    { label: "X", url: "https://x.com/kura___aanyun" }
   ],
-  // Timeline: how each stage connects to the next
-  timeline: [
-    { year: "", title: "Clinical nursing", text: "Clinical experience that raised questions about sensation." },
-    { year: "", title: "Ph.D. research", text: "Human olfactory receptor cell-array sensors." },
-    { year: "", title: "Olfactory receptor / TRP research", text: "Extending receptor studies to thermal and chemical sensing." },
-    { year: "", title: "Postdoctoral research, Kyoto University", text: "GPCR–TRP crosstalk and TRP thermal sensing." },
-    { year: "", title: "Long-term vision", text: "Evidence-based applications of aroma (future direction)." }
-  ],
+
   cvPdf: "assets/cv/cv.pdf",
   researchmapId: "sakuramoriyama"
 };
