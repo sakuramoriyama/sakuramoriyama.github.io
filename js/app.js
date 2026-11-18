@@ -28,8 +28,8 @@ const sec=(t,h)=>h?`<h2>${t}</h2>${h}`:'';
 const ul=(a,f)=>a&&a.length?`<ul class="list">${a.map(f).join('')}</ul>`:'';
 const rcard=r=>`<a class="card" href="#/research/${r.id}"><span class="tag ${r.status==='current'?'cur':''}">${r.status==='previous'?'Previous research':r.status==='current'?'Current':e(r.status)}</span><h3>${e(r.no)} ${e(r.title)}</h3><p class="sub">${e(r.summary)}</p></a>`;
 const vision=()=>{const v=D.vision;return `<div class="vision"><b>Current research</b><ul>${v.current.map(x=>`<li>${e(x)}</li>`).join('')}</ul><b>Long-term vision (future direction)</b><ul>${v.future.map(x=>`<li>${e(x)}</li>`).join('')}</ul><small class="sub">${e(v.note)}</small></div>`;};
-const nav=[['','Home'],['about','About'],['research','Research'],['publications','Publications'],['presentations','Presentations'],['awards','Awards'],['funding','Funding'],['activities','Activities'],['news','News'],['cv','CV']];
-document.querySelector('#nav').innerHTML=nav.map(([h,t])=>`<a href="#/${h}" data-h="${h}">${t}</a>`).join('');
+const nav=[['','Home'],['about','About'],['research','Research'],['https://researchmap.jp/'+P.researchmapId,'Publications'],['awards','Awards'],['funding','Funding'],['activities','Activities'],['news','News'],['cv','CV']];
+document.querySelector('#nav').innerHTML=nav.map(([h,t])=>/^http/.test(h)?`<a href="${h}" target="_blank" rel="noopener">${t} ↗</a>`:`<a href="#/${h}" data-h="${h}">${t}</a>`).join('');
 document.querySelector('#yr').textContent=new Date().getFullYear();
 const pages={
  '':()=>({t:'',h:`<div class="hero">${img(P.photo)}<div><h1>${e(P.name)}, ${e(P.degree)}</h1><p class="lead">${e(P.position)}<br>${e(P.affiliation)}</p></div></div>
