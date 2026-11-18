@@ -22,3 +22,18 @@ DATA.vision = {
   future: ["Mechanistic understanding of aroma-related sensory responses", "Evidence-based applications of aroma / aroma compounds"],
   note: "The items under 'Long-term vision' are future directions, not results of current work."
 };
+DATA.rules = [
+  // ---- Research 01: GPCR–TRP Crosstalk ----
+  { type: "publications", first: true, journal: /Biosci|Biotechnol|Biochem/i, themes: ["gpcr-trp"] },
+  { type: "funding", match: /特別研究員|DC2/, themes: ["gpcr-trp", "or-sensor"] },
+  { type: "funding", match: /ヒト嗅覚による匂い/, themes: ["gpcr-trp"] },
+  { type: "funding", match: /教育研究振興財団/, themes: ["gpcr-trp"] },
+  // ---- Research 03: Olfactory receptor cell-array sensors ----
+  { type: "publications", kind: /^book$|introduction/i, themes: ["or-sensor"] },
+  { type: "publications", match: /総説|\breview\b/i, themes: ["or-sensor"] },
+  { type: "funding", match: /アロマ精油|ビジネスモデル/, themes: ["or-sensor"] },
+  // ---- 学会発表（年の補正つき） ----
+  { type: "presentations", match: /27th SANKEN/i, set: { year: 2024 }, themes: ["gpcr-trp"] },
+  { type: "presentations", match: /26th SANKEN/i, set: { year: 2023 }, themes: ["gpcr-trp"] },
+  { type: "presentations", match: /第56回味と匂/, set: { year: 2022 }, themes: ["gpcr-trp"] }
+];
