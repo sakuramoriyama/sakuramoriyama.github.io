@@ -11,6 +11,7 @@ DATA.profile = {
   interests: ["Chemical sensing", "Thermal sensing", "GPCR signaling", "TRP channels", "Olfactory receptors", "MD simulation", "Aroma-related sensory mechanisms"],
   // Background & Research Journey: short, connected to current research (edit freely)
   career: [
+  { period: "2026.10–", text: "国立研究開発法人科学技術振興機構（JST）主催プログラムマネージャーの育成・活躍推進プログラム研修生" },
     { period: "2026.10–", text: "公益社団法人 日本アロマ環境協会 Aroma Environment Association of Japan（AEAJ）アロマテラピーインストラクター " },
     { period: "2026.1–", text: "日本学術振興会 特別研究員PD, 京都大学 高等研究院 物質-細胞統合システム拠点" },
     { period: "2025.10-2025.12", text: "日本学術振興会 特別研究員PD, 大阪大学 産業科学研究所" },
