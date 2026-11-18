@@ -29,17 +29,19 @@ const papers = await run('published_papers', p => ({
   title: g(p.paper_title), journal: g(p.publication_name), volume: p.volume || '',
   pages: [p.starting_page, p.ending_page].filter(Boolean).join('-'),
   doi: p.identifiers?.doi?.[0] || '', pmid: p.identifiers?.pm_id?.[0] || '',
-  relatedResearch: [] }));
+  first: /moriyama|森山/i.test((p.authors?.en || p.authors?.ja || [])[0]?.name || ''),
+  kind: p.published_paper_type || '', relatedResearch: [] }));
+papers.push(...await run('books_etc', a => { const au = (a.authors?.en || a.authors?.ja || []).map(x => x.name); return {
+  year: Number(yr(first(a, 'publication_date', 'from_date'))) || '', authors: au, title: g(first(a, 'book_title', 'title')),
+  journal: g(a.publisher), volume: '', pages: '', doi: '', pmid: '', first: /moriyama|森山/i.test(au[0] || ''),
+  kind: 'book', label: 'Book', relatedResearch: [] }; }));
 const rm = {
   awards: await run('awards', a => ({ year: yr(first(a, 'award_date', 'awarded_date', 'date')), title: g(a.award_name), org: g(a.association), desc: g(a.description), category: 'Award', relatedResearch: [] })),
   funding: await run('research_projects', a => ({ year: yr(a.from_date), period: span(a), title: g(a.research_project_title), program: g(a.offer_organization) || g(a.system_name), role: typeof a.category === 'string' ? a.category.replace(/_/g, ' ') : '', desc: '', relatedResearch: [] })),
   career: await run('research_experience', a => ({ period: span(a), text: [g(a.job), g(a.affiliation)].filter(Boolean).join(', ') })),
   education: await run('education', a => ({ period: span(a), text: [g(a.institution), g(a.department), g(a.degree)].filter(Boolean).join(', ') })),
   presentations: await run('presentations', a => ({ year: yr(first(a, 'publication_date', 'from_date')), authors: (a.presenters?.en || a.presenters?.ja || []).map(x => x.name), title: g(a.presentation_title), event: g(a.event), invited: !!a.invited, relatedResearch: [] })),
-  activities: [
-    ...await run('social_contribution', a => ({ date: yr(a.from_date), title: g(a.social_contribution_title), org: g(a.organization) || g(a.event), role: g(a.role), desc: '', category: 'Other', relatedResearch: [] })),
-    ...await run('committee_memberships', a => ({ date: span(a), title: g(a.committee_name), org: g(a.association), role: g(a.role), desc: '', category: 'Other', relatedResearch: [] }))
-  ]
+  activities: [] // Activities are written by hand in data/activities.js
 };
 // ---- Auto categories / theme links: keyword guesses. Edit the patterns below as you like. ----
 const THEMES = [
