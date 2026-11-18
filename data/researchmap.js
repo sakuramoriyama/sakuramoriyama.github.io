@@ -103,46 +103,8 @@ DATA.rm = {
    ]
   }
  ],
- "career": [
-  {
-   "period": "2026–9999",
-   "text": "Kyoto University"
-  },
-  {
-   "period": "2025–9999",
-   "text": "独立行政法人日本学術振興会 (特別研究員 PD)"
-  },
-  {
-   "period": "2021–2026",
-   "text": "The University of Osaka"
-  },
-  {
-   "period": "2025–",
-   "text": "独立行政法人日本学術振興会 (特別研究員 DC2)"
-  },
-  {
-   "period": "2023–2025",
-   "text": "大阪大学 超域イノベーション博士課程プログラム（博士課程教育リーディングプログラム）"
-  },
-  {
-   "period": "2023–2025",
-   "text": "大阪大学 「社会と知の統合」を実現するイノベーション博士人材フェローシップ生"
-  },
-  {
-   "period": "2024–",
-   "text": "1. Visiting Researcher, University of Geneva, Switzerland"
-  },
-  {
-   "period": "2022–2023",
-   "text": "Plug and Play University Program Fellow"
-  }
- ],
- "education": [
-  {
-   "period": "2021–2025",
-   "text": "Graduate School of Frontier Biosciences"
-  }
- ],
+ "career": [],
+ "education": [],
  "presentations": [],
  "activities": []
 };
