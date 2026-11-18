@@ -3,7 +3,7 @@ const D=window.DATA,P=D.profile,M=document.querySelector('#main');
 const e=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const R=id=>D.research.find(r=>r.id===id);
 const RM=D.rm||{};const mg=(a,b)=>{const k=new Set((a||[]).map(x=>String(x.title||x.text).toLowerCase()));return (a||[]).concat((b||[]).filter(x=>!k.has(String(x.title||x.text).toLowerCase())))};
-const AW=()=>mg(D.awards,RM.awards),FU=()=>mg(D.funding,RM.funding),AC=()=>mg(D.activities,RM.activities),CA=()=>mg(P.career,RM.career),ED=()=>mg(P.education,RM.education);
+const AW=()=>mg(D.awards,RM.awards),FU=()=>mg(D.funding,RM.funding),AC=()=>D.activities||[],CA=()=>mg(P.career,RM.career),ED=()=>mg(P.education,RM.education);
 const chips=a=>(a||[]).filter(R).map(i=>`<a class="chip" href="#/research/${i}">${e(R(i).title)}</a>`).join('');
 const img=i=>i&&i.src?`<img src="${e(i.src)}" alt="${e(i.alt||'')}" loading="lazy">`:'';
 const ja=t=>t?`<details><summary>Japanese summary / 日本語</summary><p lang="ja">${e(t)}</p></details>`:'';
@@ -40,7 +40,7 @@ const pages={
  about:()=>({t:'About',h:`<h1>About</h1><p><b>${e(P.name)}</b> (${e(P.nameJa)}), ${e(P.degree)}<br>${e(P.position)}, ${e(P.affiliation)}</p>
   ${sec('Research interests',P.interests.map(i=>`<span class="tag">${e(i)}</span>`).join(''))}
   ${sec('Background',P.story?`<p>${e(P.story)}</p>${ja(P.storyJa)}`:'')}
-  ${sec('Timeline',`<ol class="tl">${P.timeline.map(t=>`<li><b>${e(t.title)}</b> <span class="date">${e(t.year)}</span><div class="sub">${e(t.text)}</div></li>`).join('')}</ol>`)}
+  ${sec('Timeline',(P.timeline||[]).length?`<ol class="tl">${P.timeline.map(t=>`<li><b>${e(t.title)}</b> <span class="date">${e(t.year)}</span><div class="sub">${e(t.text)}</div></li>`).join('')}</ol>`:'')}
   ${sec('Career',ul(CA(),c=>`<li class="item"><span class="date">${e(c.period)}</span>${e(c.text)}</li>`))}
   ${sec('Education',ul(ED(),c=>`<li class="item"><span class="date">${e(c.period)}</span>${e(c.text)}</li>`))}
   ${sec('External profiles',ul(P.links,l=>`<li class="item"><a href="${e(l.url)}" rel="me noopener">${e(l.label)}</a></li>`))}`}),

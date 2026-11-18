@@ -36,10 +36,7 @@ const rm = {
   career: await run('research_experience', a => ({ period: span(a), text: [g(a.job), g(a.affiliation)].filter(Boolean).join(', ') })),
   education: await run('education', a => ({ period: span(a), text: [g(a.institution), g(a.department), g(a.degree)].filter(Boolean).join(', ') })),
   presentations: await run('presentations', a => ({ year: yr(first(a, 'publication_date', 'from_date')), authors: (a.presenters?.en || a.presenters?.ja || []).map(x => x.name), title: g(a.presentation_title), event: g(a.event), invited: !!a.invited, relatedResearch: [] })),
-  activities: [
-    ...await run('social_contribution', a => ({ date: yr(a.from_date), title: g(a.social_contribution_title), org: g(a.organization) || g(a.event), role: g(a.role), desc: '', category: 'Other', relatedResearch: [] })),
-    ...await run('committee_memberships', a => ({ date: span(a), title: g(a.committee_name), org: g(a.association), role: g(a.role), desc: '', category: 'Other', relatedResearch: [] }))
-  ]
+  activities: [] // Activities are written by hand in data/activities.js
 };
 // ---- Auto categories / theme links: keyword guesses. Edit the patterns below as you like. ----
 const THEMES = [
