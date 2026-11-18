@@ -11,11 +11,26 @@ DATA.profile = {
   interests: ["Chemical sensing", "Thermal sensing", "GPCR signaling", "TRP channels", "Olfactory receptors", "MD simulation", "Aroma-related sensory mechanisms"],
   // Background & Research Journey: short, connected to current research (edit freely)
   career: [
+    { period: "2026.10–", text: "公益社団法人 日本アロマ環境協会 Aroma Environment Association of Japan（AEAJ）アロマテラピーインストラクター " },
     { period: "2026.1–", text: "日本学術振興会 特別研究員PD, 京都大学 高等研究院 物質-細胞統合システム拠点" },
     { period: "2025.10-2025.12", text: "日本学術振興会 特別研究員PD, 大阪大学 産業科学研究所" },
+     { period: "2025.5–2026.6", text: "大阪大学Innovation club, Innovators’ Squad採択" },
    { period: "2025.4–2025.9", text: "日本学術振興会 特別研究員DC2, 大阪大学 産業科学研究所" },
-  ],
-  education: [{ period: "2021.4-2025.9", text: "大阪大学大学院 生命機能研究科 5年一貫制博士課程 (理学博士, 早期修了)" }],
+      { period: "2023.4–2025.9", text: "大阪大学 超域イノベーション博士課程プログラム採用" },
+   { period: "2023.4–2025.3", text: "大阪大学 「社会と知の統合」を実現するイノベーション博士人材フェローシップ生" },
+   { period: "2024.8–2024.8", text: "大阪大学産業科学研究所 若手海外派遣（ジュネーブ大学へ派遣）" },
+       { period: "2024.8–2024.8", text: "Field Research, Grasse, France" },
+     { period: "2022.10–2023.6", text: "Plug and Play University Program Fellow " },
+      { period: "2023.1–2023.3", text: "公益財団法人大阪産業局主催第59期創業チャレンジゼミ修了" },
+     { period: "–2022.3", text: "日本赤十字社愛知医療センター名古屋第二病院等で看護師として勤務" }, 
+    { period: "2021.7–", text: "公益社団法人 日本アロマ環境協会 Aroma Environment Association of Japan（AEAJ）アロマテラピーアドバイザー " },
+      { period: "2021.4–", text: "NARD JAPAN(現College international of Aromatherapy Dominique Baudoux)認定 アロマアドバイザー  " },
+    ],
+  
+  education: [{ period: "2021.4-2025.9", text: "大阪大学大学院 生命機能研究科 5年一貫制博士課程 (理学博士, 早期修了)" },
+             { period: "2015.2", text: "牧園大学校国際教育院 (韓国大田広域市) 英語研修修了 " },
+             { period: "2014.8-2014.8", text: "Nursing Research, Nam Dinh University of Nursing / Vietnamese Red Cross, Vietnam " }],
+             { period: "2014.2-2014.3", text: "Volunteer, Dementia Care Facility, New Zealand " }],
   links: [
     { label: "Researchmap", url: "https://researchmap.jp/sakuramoriyama" },
     { label: "ORCID", url: "https://orcid.org/0009-0005-9806-9835" },
