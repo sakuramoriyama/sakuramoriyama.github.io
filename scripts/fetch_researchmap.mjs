@@ -21,7 +21,7 @@ async function all(path) {
   console.log(path, out.length, 'items; keys:', Object.keys(out[0] || {}).join(','));
   return out;
 }
-const SKIP = new Set(['published_papers', 'books_etc', 'presentations']); // papers/talks live on Researchmap. Remove a name to re-enable.
+const SKIP = new Set(['published_papers', 'books_etc', 'presentations', 'research_experience', 'education']); // papers/talks live on Researchmap. Remove a name to re-enable.
 const run = async (path, f) => { if (SKIP.has(path)) return []; try { return (await all(path)).map(f); } catch (e) { console.warn(path, 'failed:', e.message); return []; } };
 
 const papers = await run('published_papers', p => ({

@@ -5,7 +5,7 @@ const R=id=>D.research.find(r=>r.id===id);
 const RULES=D.rules||[];const txt=x=>[x.title,x.text,x.event,x.org,x.program,x.journal,x.kind,(x.authors||[]).join(' ')].filter(Boolean).join(' ');
 const ap=(type,l)=>(l||[]).map(x=>{let o=x,th=null;RULES.forEach(r=>{if(r.type!==type)return;if(r.match&&!r.match.test(txt(x)))return;if(r.first&&!x.first)return;if(r.journal&&!r.journal.test(x.journal||''))return;if(r.kind&&!r.kind.test(x.kind||''))return;if(r.themes)th=(th||[]).concat(r.themes);if(r.set)o=Object.assign({},o,r.set);});return th?Object.assign({},o,{relatedResearch:[...new Set(th)]}):o;});
 const RM0=D.rm||{};const RM=Object.assign({},RM0,{awards:ap('awards',RM0.awards),funding:ap('funding',RM0.funding),presentations:ap('presentations',RM0.presentations)});const mg=(a,b)=>{const k=new Set((a||[]).map(x=>String(x.title||x.text).toLowerCase()));return (a||[]).concat((b||[]).filter(x=>!k.has(String(x.title||x.text).toLowerCase())))};
-const AW=()=>mg(D.awards,RM.awards),FU=()=>mg(D.funding,RM.funding),AC=()=>D.activities||[],CA=()=>mg(P.career,RM.career),ED=()=>mg(P.education,RM.education);
+const AW=()=>mg(D.awards,RM.awards),FU=()=>mg(D.funding,RM.funding),AC=()=>D.activities||[],CA=()=>P.career||[],ED=()=>P.education||[];
 const chips=a=>(a||[]).filter(R).map(i=>`<a class="chip" href="#/research/${i}">${e(R(i).title)}</a>`).join('');
 const img=i=>i&&i.src?`<img src="${e(i.src)}" alt="${e(i.alt||'')}" loading="lazy">`:'';
 const ja=t=>t?`<details><summary>Japanese summary / 日本語</summary><p lang="ja">${e(t)}</p></details>`:'';
