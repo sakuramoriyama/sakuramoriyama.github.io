@@ -12,6 +12,8 @@ DATA.researchmap = [
   "pages": "1302-1311",
   "doi": "10.1093/bbb/zbaf093",
   "pmid": "",
+  "first": true,
+  "kind": "scientific_journal",
   "relatedResearch": [
    "or-sensor"
   ]
@@ -30,6 +32,8 @@ DATA.researchmap = [
   "pages": "1316-1325",
   "doi": "10.1093/bbb/zbae119",
   "pmid": "39217101",
+  "first": true,
+  "kind": "scientific_journal",
   "relatedResearch": []
  },
  {
@@ -46,9 +50,46 @@ DATA.researchmap = [
   "pages": "908-917",
   "doi": "10.1093/bbb/zbae060",
   "pmid": "38734894",
+  "first": true,
+  "kind": "scientific_journal",
   "relatedResearch": [
    "or-sensor"
   ]
+ },
+ {
+  "year": 2026,
+  "authors": [
+   "sakura MORIYAMA"
+  ],
+  "title": "Advanced Gas Sensing and Information Technology --Imaging and Perception of Odorants & Volatiles--",
+  "journal": "CMC出版",
+  "volume": "",
+  "pages": "",
+  "doi": "",
+  "pmid": "",
+  "first": true,
+  "kind": "book",
+  "label": "Book",
+  "relatedResearch": [
+   "or-sensor"
+  ]
+ },
+ {
+  "year": 2024,
+  "authors": [
+   "森山さくら",
+   "黒田俊一"
+  ],
+  "title": "生体ガス計測の最新動向 = Recent trends in volatile biomarker sensing",
+  "journal": "シーエムシー出版",
+  "volume": "",
+  "pages": "",
+  "doi": "",
+  "pmid": "",
+  "first": true,
+  "kind": "book",
+  "label": "Book",
+  "relatedResearch": []
  }
 ];
 DATA.rm = {
@@ -549,33 +590,5 @@ DATA.rm = {
    "relatedResearch": []
   }
  ],
- "activities": [
-  {
-   "date": "",
-   "title": "香りの処方箋",
-   "org": "",
-   "role": "",
-   "desc": "",
-   "category": "Other",
-   "relatedResearch": []
-  },
-  {
-   "date": "",
-   "title": "気楽な英語発表練習会",
-   "org": "",
-   "role": "",
-   "desc": "",
-   "category": "Other",
-   "relatedResearch": []
-  },
-  {
-   "date": "",
-   "title": "ハッピーハロウィーン",
-   "org": "",
-   "role": "",
-   "desc": "",
-   "category": "Other",
-   "relatedResearch": []
-  }
- ]
+ "activities": []
 };
