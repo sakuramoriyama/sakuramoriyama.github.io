@@ -32,20 +32,20 @@ document.querySelector('#yr').textContent=new Date().getFullYear();
 const pages={
  '':()=>({t:'',h:`<div class="hero">${img(P.photo)}<div><h1>${e(P.name)}, ${e(P.degree)}</h1><p class="lead">${e(P.position)}<br>${e(P.affiliation)}</p></div></div>
   <p class="lead">${e(P.intro)}</p>${ja(P.introJa)}
-  <div class="vision"><b>Long-term Research Vision</b><br>${e(P.vision)} <a href="#/research">Details →</a>${ja(P.visionJa)}</div>
+  <div class="vision"><b>Long-term Research Vision</b><br>${e(P.vision)} <a href="#/research">Details →</a>${P.visionText?`<p class="small">${e(P.visionText)}</p>`:''}${ja(P.visionJa)}</div>
   ${sec('Research',`<div class="cards">${D.research.map(rcard).join('')}</div>`)}
   ${sec('Selected Publications',ul(pubs().filter(p=>p.selected),pub))}
   ${sec('Awards &amp; Fellowships',ul(AW().slice(0,3),award)+'<a href="#/awards">All →</a>')}
   ${sec('Recent News',`<ul class="list news">${(D.news||[]).slice(0,3).map(newsItem).join('')}</ul><a href="#/news">All →</a>`)}`}),
  about:()=>({t:'About',h:`<h1>About</h1><p><b>${e(P.name)}</b> (${e(P.nameJa)}), ${e(P.degree)}<br>${e(P.position)}, ${e(P.affiliation)}</p>
   ${sec('Research interests',P.interests.map(i=>`<span class="tag">${e(i)}</span>`).join(''))}
-  ${sec('Background',`<p>${e(P.story)}</p>${ja(P.storyJa)}`)}
+  ${sec('Background',P.story?`<p>${e(P.story)}</p>${ja(P.storyJa)}`:'')}
   ${sec('Timeline',`<ol class="tl">${P.timeline.map(t=>`<li><b>${e(t.title)}</b> <span class="date">${e(t.year)}</span><div class="sub">${e(t.text)}</div></li>`).join('')}</ol>`)}
   ${sec('Career',ul(CA(),c=>`<li class="item"><span class="date">${e(c.period)}</span>${e(c.text)}</li>`))}
   ${sec('Education',ul(ED(),c=>`<li class="item"><span class="date">${e(c.period)}</span>${e(c.text)}</li>`))}
   ${sec('External profiles',ul(P.links,l=>`<li class="item"><a href="${e(l.url)}" rel="me noopener">${e(l.label)}</a></li>`))}`}),
  research:id=>{
-  if(!id)return{t:'Research',h:`<h1>Research</h1>${D.research.map(r=>`<div class="cards" style="margin-bottom:14px">${rcard(r)}</div>`).join('')}${sec('Long-term Research Vision',`<p class="lead">${e(P.vision)}</p>${vision()}`)}`};
+  if(!id)return{t:'Research',h:`<h1>Research</h1>${D.research.map(r=>`<div class="cards" style="margin-bottom:14px">${rcard(r)}</div>`).join('')}${sec('Long-term Research Vision',`<p class="lead">${e(P.vision)}</p>${P.visionText?`<p class="small">${e(P.visionText)}</p>`:''}${vision()}`)}`};
   const r=R(id);if(!r)return{t:'Not found',h:'<p>Not found.</p>'};
   const S=[['Overview',r.overview],['Background',r.background],['Research Question',r.question],['Approach',r.approach],['Key Findings',r.findings],['Current Direction',r.direction]];
   return{t:r.title,h:`<p><a href="#/research">← Research</a></p><span class="tag ${r.status==='current'?'cur':''}">${r.status==='previous'?'Previous research':e(r.status)}</span><h1>${e(r.no)} ${e(r.title)}</h1>
