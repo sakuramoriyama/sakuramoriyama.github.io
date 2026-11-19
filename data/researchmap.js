@@ -1,55 +1,6 @@
 DATA.researchmap = [];
 DATA.rm = {
- "awards": [
-  {
-   "year": "2026",
-   "title": "The 75th Lindau Nobel Laureate Meeting",
-   "org": "",
-   "desc": "",
-   "category": "International selection",
-   "relatedResearch": []
-  },
-  {
-   "year": "2025",
-   "title": "第3回関西テックプラングランプリ NECソリューションイノベータ賞",
-   "org": "株式会社リバネス",
-   "desc": "大阪大学Innovation clubのweb記事にて掲載 https://ou-iclub.net/news/5909",
-   "category": "Award",
-   "relatedResearch": []
-  },
-  {
-   "year": "2025",
-   "title": "Daido Award, Pitch Competition at the Super Interdisciplinary Conference",
-   "org": "超異分野学会 大阪2025",
-   "desc": "「知識製造イグニッション」は、異分野・異業種の参加者が連携プロジェクトを創出するピッチコンテスト形式のプログラムです。ダイドーグループホールディングス提供の「ダイドー賞」は、抗老化や健康維持に関連する食品・飲料の連携仮説を評価する賞で、私たちの「ストレス軽減体験ができる自動販売機プロジェクト」が受賞しました。",
-   "category": "Award",
-   "relatedResearch": []
-  },
-  {
-   "year": "2025",
-   "title": "Poster award",
-   "org": "Young Researchers’ Group of Japanese Association for the Study of Taste and Smell",
-   "desc": "",
-   "category": "Poster Award",
-   "relatedResearch": []
-  },
-  {
-   "year": "2025",
-   "title": "BEST POSTER AWARD",
-   "org": "The 28th SANKEN International Symposium",
-   "desc": "",
-   "category": "Poster Award",
-   "relatedResearch": []
-  },
-  {
-   "year": "2024",
-   "title": "BEST POSTER AWARD",
-   "org": "The 27th SANKEN International Symposium",
-   "desc": "",
-   "category": "Poster Award",
-   "relatedResearch": []
-  }
- ],
+ "awards": [],
  "funding": [
   {
    "year": "2025",
