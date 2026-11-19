@@ -7,6 +7,6 @@ DATA.activities = [
   { category: "Researcher Development", date: "2025", title: "Seeds-Hubシンポジウム 『今、研究者に聞いてみたい「研究者になるってどういうこと？」』", org: "Seeds-Hub協議会、京都大学「医学領域」産学連携推進機構（KUMBL）、京都大学メディカルイノベーション大学院プログラム（MIP）", role: "パネルセッション", desc: "", relatedResearch: [], photo: null },
   { category: "Researcher Development", date: "2025", title: "阪大生のためのキャリア開発講座 データと経験から博士キャリアを考える", org: "大阪大学キャリアセンター", role: "登壇", desc: "", relatedResearch: [], photo: null },
   { category: "Science Communication", date: "2024", title: "中高生のための学会 サイエンスキャッスル", org: "株式会社リバネス", role: "ポスター審査員", desc: "小学生から高校生までの学生たちのポスター発表を審査員として評価した。", relatedResearch: [], photo: null },
-  { category: "Researcher Development", date: "2024", title: "「AI×医療×ヘルスケア〜AI時代の医療・ヘルスケアとその先を考える〜」匂いのデジタル化基盤技術とアロマオイルを用いたヘルスケアの可能性", org: "大阪大学超域イノベーション博士課程プログラム「超域への扉」", role: "パネルセッション", desc: "大阪大学超域イノベーション博士課程プログラムに所属する修士の学生に対して、発表、パネルセッションを行った。「超域への扉」は、異分野の研究者が集まり、最先端の研究や課題について議論し、学術的な交流を深めることを目的としている。", relatedResearch: [], photo: null },
+  { category: "Researcher Development", date: "2024", title: "「AI×医療×ヘルスケア〜AI時代の医療・ヘルスケアとその先を考える〜」匂いのデジタル化基盤技術とアロマオイルを用いたヘルスケアの可能性", org: "大阪大学超域イノベーション博士課程プログラム「超域への扉」", role: "パネルセッション", desc: "", relatedResearch: [], photo: null },
   { category: "Innovation / Entrepreneurship", date: "2024", title: "未来の博士フェス2024～博士と創る、博士が輝く社会へ～", org: "文部科学省（MEXT）, 科学技術振興機構（JST）", role: "登壇", desc: "「社会課題解決提案グランプリ」の学生に選出され、プレゼンテーション発表のために登壇した。", relatedResearch: [], photo: null }
 ];
