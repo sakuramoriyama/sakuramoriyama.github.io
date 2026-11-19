@@ -111,7 +111,7 @@ DATA.profile = {
     },
     {
       period: "2014.8",
-      text: "ナムディン看護大学・ベトナム赤十字社（ベトナム）看護学研修 修了",
+      text: "ナムディン看護大学・ベトナム赤十字社（ベトナム）海外研修",
       sub: "nursing research & clinical training, nam dinh university of nursing / vietnamese red cross, vietnam"
     },
     {
