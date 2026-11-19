@@ -5,11 +5,11 @@ const R=id=>D.research.find(r=>r.id===id);
 const RULES=D.rules||[];const txt=x=>[x.title,x.text,x.event,x.org,x.program,x.journal,x.kind,(x.authors||[]).join(' ')].filter(Boolean).join(' ');
 const ap=(type,l)=>(l||[]).map(x=>{let o=x,th=null;RULES.forEach(r=>{if(r.type!==type)return;if(r.match&&!r.match.test(txt(x)))return;if(r.first&&!x.first)return;if(r.journal&&!r.journal.test(x.journal||''))return;if(r.kind&&!r.kind.test(x.kind||''))return;if(r.themes)th=(th||[]).concat(r.themes);if(r.set)o=Object.assign({},o,r.set);});return th?Object.assign({},o,{relatedResearch:[...new Set(th)]}):o;});
 const RM0=D.rm||{};const RM=Object.assign({},RM0,{awards:ap('awards',RM0.awards),funding:ap('funding',RM0.funding),presentations:ap('presentations',RM0.presentations)});const mg=(a,b)=>{const k=new Set((a||[]).map(x=>String(x.title||x.text).toLowerCase()));return (a||[]).concat((b||[]).filter(x=>!k.has(String(x.title||x.text).toLowerCase())))};
-const AW=()=>mg(D.awards,RM.awards),FU=()=>mg(D.funding,RM.funding),AC=()=>D.activities||[],CA=()=>P.career||[],PR=()=>P.programs||[],ED=()=>P.education||[];
-const itemRow=c=>`<li class="item"><span class="date">${e(c.period)}</span>${e(c.text)}${c.sub?`<div class="sub">${e(c.sub)}</div>`:''}</li>`;
+const AW=()=>D.awards||[],FU=()=>mg(D.funding,RM.funding),AC=()=>D.activities||[],CA=()=>P.career||[],ED=()=>P.education||[];
 const chips=a=>(a||[]).filter(R).map(i=>`<a class="chip" href="#/research/${i}">${e(R(i).title)}</a>`).join('');
 const img=i=>i&&i.src?`<img src="${e(i.src)}" alt="${e(i.alt||'')}" loading="lazy">`:'';
 const ja=t=>t?`<details><summary>Japanese summary / 日本語</summary><p lang="ja">${e(t)}</p></details>`:'';
+const row=c=>`<li class="item"><span class="date">${e(c.period)}</span>${e(c.text)}${c.sub?`<div class="sub">${e(c.sub)}</div>`:''}</li>`;
 const rel=(k,id)=>({publications:pubs,funding:FU,awards:AW,activities:AC}[k]()||[]).filter(x=>(x.relatedResearch||[]).includes(id));
 const pubs=()=>{const m=D.publications||[],d=new Set(m.map(p=>(p.doi||'').toLowerCase()).filter(Boolean));
  return m.concat(ap('publications',D.researchmap).filter(p=>!p.doi||!d.has(p.doi.toLowerCase())));};
@@ -38,15 +38,14 @@ const pages={
   <div class="vision"><b>Long-term Research Vision</b><br>${e(P.vision)} <a href="#/research">Details →</a>${P.visionText?`<p class="small">${e(P.visionText)}</p>`:''}${ja(P.visionJa)}</div>
   ${sec('Research',`<div class="cards">${D.research.map(rcard).join('')}</div>`)}
   ${sec('Selected Publications',ul(pubs().filter(p=>p.selected),pub))}
-  ${sec('Awards &amp; Fellowships',ul(AW().slice(0,3),award)+'<a href="#/awards">All →</a>')}
+  ${sec('Awards',ul(AW().slice(0,3),award)+'<a href="#/awards">All →</a>')}
   ${sec('Recent News',`<ul class="list news">${(D.news||[]).slice(0,3).map(newsItem).join('')}</ul><a href="#/news">All →</a>`)}`}),
  about:()=>({t:'About',h:`<h1>About</h1><p><b>${e(P.name)}</b> (${e(P.nameJa)}), ${e(P.degree)}<br>${e(P.position)}, ${e(P.affiliation)}</p>
   ${sec('Research interests',P.interests.map(i=>`<span class="tag">${e(i)}</span>`).join(''))}
   ${sec('Background',P.story?`<p>${e(P.story)}</p>${ja(P.storyJa)}`:'')}
   ${sec('Timeline',(P.timeline||[]).length?`<ol class="tl">${P.timeline.map(t=>`<li><b>${e(t.title)}</b> <span class="date">${e(t.year)}</span><div class="sub">${e(t.text)}</div></li>`).join('')}</ol>`:'')}
-  ${sec('Career',ul(CA(),itemRow))}
-  ${sec('Education',ul(ED(),itemRow))}
-  ${sec('Programs &amp; Certifications',ul(PR(),itemRow))}
+  ${sec('Career',ul(CA(),row))}
+  ${sec('Education',ul(ED(),row))}${sec('Programs &amp; Certifications',ul(P.programs,row))}
   ${sec('External profiles',ul(P.links,l=>`<li class="item"><a href="${e(l.url)}" rel="me noopener">${e(l.label)}</a></li>`))}`}),
  research:id=>{
   if(!id)return{t:'Research',h:`<h1>Research</h1>${D.research.map(r=>`<div class="cards" style="margin-bottom:14px">${rcard(r)}</div>`).join('')}${sec('Long-term Research Vision',`<p class="lead">${e(P.vision)}</p>${P.visionText?`<p class="small">${e(P.visionText)}</p>`:''}${vision()}`)}`};
@@ -62,11 +61,11 @@ const pages={
   ${sec('Related Activities',ul(rel('activities',id),act))}`};},
  publications:()=>({t:'Publications',h:`<h1>Publications</h1><p class="sub">Full list: <a href="https://researchmap.jp/${e(P.researchmapId)}">Researchmap</a></p>${pubList(pubs())}`}),
  presentations:()=>({t:'Presentations',h:`<h1>Conference Presentations</h1><p class="sub">Imported from <a href="https://researchmap.jp/${e(P.researchmapId)}">Researchmap</a></p>${presList(RM.presentations)||'<p class="sub">No entries yet.</p>'}`}),
- awards:()=>({t:'Awards',h:`<h1>Awards &amp; Fellowships</h1>${ul(AW().slice().sort((a,b)=>b.year-a.year),award)}`}),
+ awards:()=>({t:'Awards',h:`<h1>Awards</h1>${ul(AW().slice().sort((a,b)=>b.year-a.year),award)}`}),
  funding:()=>({t:'Funding',h:`<h1>Funding</h1>${ul(FU().slice().sort((a,b)=>b.year-a.year),fund)}`}),
  activities:()=>({t:'Activities',h:`<h1>Academic &amp; Science Activities</h1>${D.activityCategories.concat(AC().some(a=>a.category==='Other')?['Other']:[]).map(c=>sec(c,ul(AC().filter(a=>a.category===c),act))).join('')}`}),
  news:()=>({t:'News',h:`<h1>News</h1><ul class="list news">${(D.news||[]).map(newsItem).join('')}</ul>`}),
- cv:()=>({t:'CV',h:`<h1>CV</h1><p><a href="${e(P.cvPdf)}">Download full CV (PDF)</a></p>${sec('Career',ul(CA(),itemRow))}${sec('Education',ul(ED(),itemRow))}${sec('Programs &amp; Certifications',ul(PR(),itemRow))}${sec('Awards',ul(AW(),award))}${sec('Funding',ul(FU(),fund))}`})
+ cv:()=>({t:'CV',h:`<h1>CV</h1><p><a href="${e(P.cvPdf)}">Download full CV (PDF)</a></p>${sec('Career',ul(CA(),row))}${sec('Education',ul(ED(),row))}${sec('Programs &amp; Certifications',ul(P.programs,row))}${sec('Awards',ul(AW(),award))}${sec('Funding',ul(FU(),fund))}`})
 };
 function route(){const[,p='',id]=location.hash.replace(/^#/,'').split('/');const f=pages[p]||pages[''];const o=f(id);
  M.innerHTML=o.h;document.title=(o.t?o.t+' | ':'')+'Sakura Moriyama, Ph.D. | Kyoto University';
