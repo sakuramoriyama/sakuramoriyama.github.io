@@ -35,7 +35,7 @@ document.querySelector('#yr').textContent=new Date().getFullYear();
 const GUIDE=[['#/research','Research','研究テーマと長期ビジョン'],['#/about','About','経歴・学歴・認定資格'],['#/awards','Awards','受賞'],['#/funding','Funding','研究費・助成'],['#/activities','Activities','企画・登壇・アウトリーチ'],['#/cv','CV','履歴書（PDFあり）'],['https://researchmap.jp/'+P.researchmapId,'Publications ↗','論文・発表（Researchmap）']];
 const contact=()=>{const c=P.contact;if(!c)return '';const m=c.emailUser+'@'+c.emailDomain;return sec('Contact',`<p>${e(c.lab)}<br>${e(c.address)}<br><a href="mailto:${e(m)}">${e(m)}</a></p><p class="sub">${e(c.labEn)}<br>${e(c.addressEn)}</p>`);};
 const pages={
- '':()=>({t:'',h:`<div class="hero">${img(P.photo)}<div><h1>${e(P.name)}, ${e(P.degree)}</h1><p class="lead">${e(P.position)}<br>${e(P.affiliation)}</p></div></div>
+ '':()=>({t:'',h:`<div class="hero">${img(P.photo)}<div><h1>${e(P.name)}, ${e(P.degree)}</h1><p class="lead">${e(P.position)}<br>${e(P.affiliation)}</p><p class="links">${(P.links||[]).map(l=>`<a href="${e(l.url)}" rel="me noopener" target="_blank">${e(l.label)}</a>`).join('')}</p></div></div>
   <p class="lead tagline">${e(P.vision)} <a href="#/research">Vision →</a></p>
   ${sec('Explore this site',`<div class="cards guide">${GUIDE.map(g=>`<a class="card" href="${e(g[0])}"${/^http/.test(g[0])?' target="_blank" rel="noopener"':''}><h3>${g[1]}</h3><p class="sub">${g[2]}</p></a>`).join('')}</div>`)}
   ${sec('Research',`<div class="cards">${D.research.map(rcard).join('')}</div>`)}
@@ -46,8 +46,7 @@ const pages={
   ${sec('Background',P.story?`<p>${e(P.story)}</p>${ja(P.storyJa)}`:'')}
   ${sec('Timeline',(P.timeline||[]).length?`<ol class="tl">${P.timeline.map(t=>`<li><b>${e(t.title)}</b> <span class="date">${e(t.year)}</span><div class="sub">${e(t.text)}</div></li>`).join('')}</ol>`:'')}
   ${sec('Career',ul(CA(),row))}
-  ${sec('Education',ul(ED(),row))}${sec('Programs &amp; Certifications',ul(P.programs,row))}
-  ${sec('External profiles',ul(P.links,l=>`<li class="item"><a href="${e(l.url)}" rel="me noopener">${e(l.label)}</a></li>`))}`}),
+  ${sec('Education',ul(ED(),row))}${sec('Programs &amp; Certifications',ul(P.programs,row))}`}),
  research:id=>{
   if(!id)return{t:'Research',h:`<h1>Research</h1><p class="lead">${e(P.intro)}</p>${ja(P.introJa)}
   ${sec('Long-term Research Vision',`<p class="lead">${e(P.vision)}</p>${P.visionText?`<p class="small">${e(P.visionText)}</p>`:''}${ja(P.visionJa)}${vision()}`)}
