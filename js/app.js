@@ -56,7 +56,7 @@ const pages={
   return{t:r.title,h:`<p><a href="#/research">← Research</a></p><span class="tag ${r.status==='current'?'cur':''}">${r.status==='previous'?'Previous research':e(r.status)}</span><h1>${e(r.no)} ${e(r.title)}</h1>
   <p>${(r.keywords||[]).map(k=>`<span class="tag">${e(k)}</span>`).join('')}</p>${ja(r.ja)}
   ${S.map(([t,v])=>sec(t,v?`<p>${e(v)}</p>`:'')).join('')}
-  ${sec('Related Publications',ul(rel('publications',id),pub))}
+  ${sec('Related Publications',ul(rel('publications',id).slice().sort((a,b)=>(b.year||0)-(a.year||0)),pub))}
   ${sec('Related Funding',ul(rel('funding',id),fund))}
   ${sec('Related Presentations',presList((RM.presentations||[]).filter(p=>(p.relatedResearch||[]).includes(id))))}
   ${sec('Related Awards',ul(rel('awards',id),award))}

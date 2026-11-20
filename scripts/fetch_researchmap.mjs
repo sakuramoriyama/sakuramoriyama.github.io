@@ -21,7 +21,7 @@ async function all(path) {
   console.log(path, out.length, 'items; keys:', Object.keys(out[0] || {}).join(','));
   return out;
 }
-const SKIP = new Set(['published_papers', 'books_etc', 'presentations', 'research_experience', 'education', 'awards']); // papers/talks live on Researchmap. Remove a name to re-enable.
+const SKIP = new Set(['books_etc', 'presentations', 'research_experience', 'education', 'awards']); // papers/talks live on Researchmap. Remove a name to re-enable.
 const run = async (path, f) => { if (SKIP.has(path)) return []; try { return (await all(path)).map(f); } catch (e) { console.warn(path, 'failed:', e.message); return []; } };
 
 const papers = await run('published_papers', p => ({
@@ -36,6 +36,11 @@ papers.push(...await run('books_etc', a => { const au = (a.authors?.en || a.auth
   year: Number(yr(first(a, 'publication_date', 'from_date'))) || '', authors: au, title: g(first(a, 'book_title', 'title')),
   journal: g(a.publisher), volume: '', pages: '', doi: '', pmid: '', first: /moriyama|森山/i.test(au[0] || ''),
   kind: 'book', label: 'Book', relatedResearch: [] }; }));
+{ // keep original papers only: drop reviews / book chapters (types not verified; counts are logged)
+  const kinds = {}; papers.forEach(p => { const k = p.kind || '(none)'; kinds[k] = (kinds[k] || 0) + 1; });
+  console.log('paper kinds:', JSON.stringify(kinds));
+  for (let i = papers.length - 1; i >= 0; i--) if (/^(introduction|in_book|book)/i.test(papers[i].kind || '')) papers.splice(i, 1);
+}
 const rm = {
   awards: await run('awards', a => ({ year: yr(first(a, 'award_date', 'awarded_date', 'date')), title: g(a.award_name), org: g(a.association), desc: g(a.description), category: 'Award', relatedResearch: [] })),
   funding: await run('research_projects', a => ({ year: yr(a.from_date), period: span(a), title: g(a.research_project_title), program: g(a.offer_organization) || g(a.system_name), role: typeof a.category === 'string' ? a.category.replace(/_/g, ' ') : '', desc: '', relatedResearch: [] })),
