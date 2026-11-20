@@ -32,14 +32,15 @@ const vision=()=>{const v=D.vision;return `<div class="vision"><b>Current resear
 const nav=[['','Home'],['about','About'],['research','Research'],['https://researchmap.jp/'+P.researchmapId,'Publications'],['awards','Awards'],['funding','Funding'],['activities','Activities'],['news','News'],['cv','CV']];
 document.querySelector('#nav').innerHTML=nav.map(([h,t])=>/^http/.test(h)?`<a href="${h}" target="_blank" rel="noopener">${t} ↗</a>`:`<a href="#/${h}" data-h="${h}">${t}</a>`).join('');
 document.querySelector('#yr').textContent=new Date().getFullYear();
+const GUIDE=[['#/research','Research','研究テーマと長期ビジョン'],['#/about','About','経歴・学歴・認定資格'],['#/awards','Awards','受賞'],['#/funding','Funding','研究費・助成'],['#/activities','Activities','企画・登壇・アウトリーチ'],['#/cv','CV','履歴書（PDFあり）'],['https://researchmap.jp/'+P.researchmapId,'Publications ↗','論文・発表（Researchmap）']];
+const contact=()=>{const c=P.contact;if(!c)return '';const m=c.emailUser+'@'+c.emailDomain;return sec('Contact',`<p>${e(c.lab)}<br>${e(c.address)}<br><a href="mailto:${e(m)}">${e(m)}</a></p><p class="sub">${e(c.labEn)}<br>${e(c.addressEn)}</p>`);};
 const pages={
  '':()=>({t:'',h:`<div class="hero">${img(P.photo)}<div><h1>${e(P.name)}, ${e(P.degree)}</h1><p class="lead">${e(P.position)}<br>${e(P.affiliation)}</p></div></div>
-  <p class="lead">${e(P.intro)}</p>${ja(P.introJa)}
-  <div class="vision"><b>Long-term Research Vision</b><br>${e(P.vision)} <a href="#/research">Details →</a>${P.visionText?`<p class="small">${e(P.visionText)}</p>`:''}${ja(P.visionJa)}</div>
+  <p class="lead tagline">${e(P.vision)} <a href="#/research">Vision →</a></p>
+  ${sec('Explore this site',`<div class="cards guide">${GUIDE.map(g=>`<a class="card" href="${e(g[0])}"${/^http/.test(g[0])?' target="_blank" rel="noopener"':''}><h3>${g[1]}</h3><p class="sub">${g[2]}</p></a>`).join('')}</div>`)}
   ${sec('Research',`<div class="cards">${D.research.map(rcard).join('')}</div>`)}
-  ${sec('Selected Publications',ul(pubs().filter(p=>p.selected),pub))}
-  ${sec('Awards',ul(AW().slice(0,3),award)+'<a href="#/awards">All →</a>')}
-  ${sec('Recent News',`<ul class="list news">${(D.news||[]).slice(0,3).map(newsItem).join('')}</ul><a href="#/news">All →</a>`)}`}),
+  ${sec('Recent News',`<ul class="list news">${(D.news||[]).slice(0,3).map(newsItem).join('')}</ul><a href="#/news">All →</a>`)}
+  ${contact()}`}),
  about:()=>({t:'About',h:`<h1>About</h1><p><b>${e(P.name)}</b> (${e(P.nameJa)}), ${e(P.degree)}<br>${e(P.position)}, ${e(P.affiliation)}</p>
   ${sec('Research interests',P.interests.map(i=>`<span class="tag">${e(i)}</span>`).join(''))}
   ${sec('Background',P.story?`<p>${e(P.story)}</p>${ja(P.storyJa)}`:'')}
@@ -48,7 +49,9 @@ const pages={
   ${sec('Education',ul(ED(),row))}${sec('Programs &amp; Certifications',ul(P.programs,row))}
   ${sec('External profiles',ul(P.links,l=>`<li class="item"><a href="${e(l.url)}" rel="me noopener">${e(l.label)}</a></li>`))}`}),
  research:id=>{
-  if(!id)return{t:'Research',h:`<h1>Research</h1>${D.research.map(r=>`<div class="cards" style="margin-bottom:14px">${rcard(r)}</div>`).join('')}${sec('Long-term Research Vision',`<p class="lead">${e(P.vision)}</p>${P.visionText?`<p class="small">${e(P.visionText)}</p>`:''}${vision()}`)}`};
+  if(!id)return{t:'Research',h:`<h1>Research</h1><p class="lead">${e(P.intro)}</p>${ja(P.introJa)}
+  ${sec('Long-term Research Vision',`<p class="lead">${e(P.vision)}</p>${P.visionText?`<p class="small">${e(P.visionText)}</p>`:''}${ja(P.visionJa)}${vision()}`)}
+  ${sec('Research themes',`<div class="cards">${D.research.map(rcard).join('')}</div>`)}`};
   const r=R(id);if(!r)return{t:'Not found',h:'<p>Not found.</p>'};
   const S=[['Overview',r.overview],['Background',r.background],['Research Question',r.question],['Approach',r.approach],['Key Findings',r.findings],['Current Direction',r.direction]];
   return{t:r.title,h:`<p><a href="#/research">← Research</a></p><span class="tag ${r.status==='current'?'cur':''}">${r.status==='previous'?'Previous research':e(r.status)}</span><h1>${e(r.no)} ${e(r.title)}</h1>
