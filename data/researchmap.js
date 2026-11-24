@@ -64,7 +64,7 @@ DATA.rm = {
    "year": "2025",
    "period": "2025–2027",
    "title": "新型ヒト嗅覚受容体匂いセンサーによるアロマ精油の作用機構の解明",
-   "program": "日本学術振興会",
+   "program": "日本学術振興会 特別研究員(DC2)",
    "role": "",
    "desc": "",
    "relatedResearch": [
@@ -73,8 +73,8 @@ DATA.rm = {
   },
   {
    "year": "2026",
-   "period": "2026–",
-   "title": "国際研究集会発表助成事業",
+   "period": "2026",
+   "title": "国際研究集会発表助成事業(ECRO2026での発表に対して)",
    "program": "京都大学教育研究振興財団",
    "role": "",
    "desc": "",
@@ -92,7 +92,7 @@ DATA.rm = {
   {
    "year": "2023",
    "period": "2023–2025",
-   "title": "Development of Human Olfactory Receptor-Expressing Sensors as a Foundation for the Digitalization of Scent Information",
+   "title": "大阪大学「社会と知の統合」を実現するイノベーション博士人材フェローシップ",
    "program": "Japan Science and Technology Agency (JST)",
    "role": "",
    "desc": "",
@@ -104,7 +104,7 @@ DATA.rm = {
    "year": "2024",
    "period": "2024–2025",
    "title": "ヒト嗅覚による匂い・香り受容機構に関する研究",
-   "program": "大阪大学産業科学研究所",
+   "program": "大阪大学産業科学研究所 若手海外派遣",
    "role": "",
    "desc": "",
    "relatedResearch": [
